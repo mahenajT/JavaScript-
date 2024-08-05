@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="output"></div>
+    <script>
+      /*
+      // Waiting for a file => Using CallBack => Old Way
+      function getFile(callBackFunc) {
+        let request = new XMLHttpRequest();
+        request.open("GET", "4_mycar.html");
+        request.onload = function () {
+          if (request.status == 200) {
+            callBackFunc(request.responseText);
+          } else {
+            callBackFunc("Error: " + request.status);
+          }
+        };
+        request.send();
+      }
+        */
+      function displayContent(content) {
+        document.getElementById("output").innerHTML = content;
+      }
+      //   getFile(displayContent); // Using CallBack
+      //   Example using Promise
+      let myPromise = new Promise((resolve, reject) => {
+        let request = new XMLHttpRequest();
+        request.open("GET", "4_mycar.html");
+        request.onload = function () {
+          if (request.status == 200) {
+            resolve(request.response);
+          } else {
+            reject("File not found");
+          }
+        };
+        request.send();
+      });
+      myPromise.then(
+        function (value) {
+          displayContent(value);
+        },
+        function (error) {
+          displayContent(error);
+        }
+      );
+    </script>
+  </body>
+</html>
