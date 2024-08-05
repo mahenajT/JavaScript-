@@ -1,7 +1,7 @@
 /**
  * Spread Operator (...)
  * = > Expands Element
- * Rest Operator {... }
+ * Rest Operator / Parameter {... }
  * => Collects Element
 
  * 1. Array
@@ -40,7 +40,7 @@ console.log(updatedVehicleInfo);
 // Notice the properties that did not match were combined, but the property that did match, color, was overwritten by the last object that was passed, updateMyVehicle. The resulting color is now yellow.
 
 
-/* Rest Operator */
+/* Rest Operator / Parameter */
 function sum(...numbers){
     return numbers.reduce((total, value) => total + value,0)
 }
