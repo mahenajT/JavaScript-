@@ -2,6 +2,15 @@
  *  Destructing Arrays
  *  Destructing Objects
  */
+
+// Array Destructuring
+let [a, b] = [1, 2];
+console.log(a, b); // 1 2
+
+// Object Destructuring
+let { name, age } = { name: "Alice", age: 25 };
+console.log(name, age); // Alice 25
+
 const vehicles = ["mustang", "f-150", "expedition"];
 
 // old way of array destructing
