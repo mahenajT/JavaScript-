@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo</title>
+  </head>
+  <style>
+    .container {
+      box-sizing: border-box;
+      background: #58004a;
+      min-height: 300px;
+      max-width: 300px;
+      padding: 20px 40px;
+      text-align: center;
+      border-radius: 15px;
+    }
+    input {
+      box-sizing: border-box;
+      border: 0;
+      outline: 0;
+      padding: 10px 20px;
+      width: 100%;
+      border-radius: 10px;
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+    button {
+      padding: 7px 13px;
+      border-radius: 10px;
+      border: 0;
+      outline: 0;
+      background: rgb(14, 214, 14);
+      cursor: pointer;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+    #todo-list {
+      max-height: 300px;
+      max-width: 300px;
+      background: #ffeded;
+      border-radius: 5px;
+      max-height: 140px;
+
+      overflow: auto;
+    }
+    li {
+      text-align: left;
+    }
+  </style>
+  <body>
+    <div class="container">
+      <input type="text" id="task" placeholder="New Task" />
+      <button onclick="addTask()">Add Task</button>
+      <div id="todo-list"></div>
+    </div>
+    <script>
+      let tasks = ["Task 1", "Task 2"];
+
+      function renderTask() {
+        // Mapping tasks to create list items and joining them as a string
+        const taskHtml = tasks.map((task) => `<li>${task}</li>`).join(" ");
+        // Setting the innerHTML of the todo-list div to the created list items
+        document.getElementById("todo-list").innerHTML = `<ul>${taskHtml}</ul>`;
+      }
+      function addTask() {
+        const task = document.getElementById("task").value;
+        if (task.trim() !== "") {
+          // Adding new task to the tasks array
+          tasks = [...tasks, task];
+          renderTask();
+          document.getElementById("task").value = "";
+        }
+      }
+      renderTask();
+    </script>
+  </body>
+</html>
